@@ -2,29 +2,11 @@ from bs4 import BeautifulSoup
 import requests
 import os
 import unidecode
+from artist import Artist
 
 from typing import Dict, List, Tuple
 
 AUTHORS = "https://www.wga.hu/cgi-bin/artist.cgi?"
-
-class Artist():
-
-    def __init__(self, name: str, url: str):
-        names = name.split(", ")
-
-        if len(names) != 2:
-            raise ValueError("Invalid artist name")
-
-        self.surname = names[0].lower()
-        self.other_names = names[1]
-        self.url = url
-        self.url_name = self.get_url_name()
-    
-    def __str__(self):
-        return self.surname.capitalize() + ", " + self.other_names
-    
-    def get_url_name(self):
-
 
 def parse_parameters(parameters: Dict[str, str],
                      kwargs: Dict[str, str]) -> None:
@@ -77,8 +59,8 @@ def get_image(**kwargs):
         print("No artwork found")
         return -1
     artist = parse_artist(element)
-    print(artist)
+    print(artist.url_name)
 
 
 if __name__ == "__main__":
-    get_image(school="Hungarian")
+    get_image(school="Hungarian", period="Impressionism")
