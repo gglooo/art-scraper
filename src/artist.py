@@ -8,10 +8,10 @@ class Artist():
         names = name.split(", ")
 
         if len(names) < 2:
-            raise ValueError("Invalid artist name")
+            names = name.split(" ")
 
         self.surname = names[0].lower()
-        self.other_names = ", ".join(names[1:])
+        self.other_names = "" if len(names) < 2 else ", ".join(names[1:])
         self.url = url
         self.url_name = self.get_url_name()
         self.artist_url = Artist.ART_URL + self.url_name[0] + "/" + self.url_name
