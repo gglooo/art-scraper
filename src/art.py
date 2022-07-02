@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-import requests
 from artist import Artist
 from requests_html import HTMLSession
 import re
@@ -102,7 +101,6 @@ def get_image(force_mode: bool=False, **kwargs):
     displayed_pic = random.choice(all_pictures_url)
 
     print(f"{Artist.ART_URL}{displayed_pic}")
-    print(f"{artist.artist_url}")
 
 
 if __name__ == "__main__":
