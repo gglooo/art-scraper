@@ -76,6 +76,8 @@ def get_image(force_mode: bool=False, **kwargs):
 
     if not os.path.exists(CACHE_FOLDER):
         os.mkdir(CACHE_FOLDER)
+    elif len(os.listdir(CACHE_FOLDER)) > 14:
+        os.remove("./" + CACHE_FOLDER + '/' + random.choice(os.listdir(CACHE_FOLDER)))
     
     cache_file = CACHE_FOLDER + "/" + url.split("?")[1].split("from")[0]
 
@@ -104,4 +106,4 @@ def get_image(force_mode: bool=False, **kwargs):
 
 
 if __name__ == "__main__":
-    get_image(school="Bohemian")
+    get_image()
